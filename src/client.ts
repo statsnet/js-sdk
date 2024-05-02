@@ -58,7 +58,7 @@ class Client {
         return JSON.parse(this.stringifyResponse(r))
     }
 
-    async search(query: string, jurisdiction: string | undefined = undefined, limit: number = 5) {
+    async search(query: string, jurisdiction: string | undefined = undefined, limit: number = 5): Promise<object> {
         if (!query) {
             throw new InvalidParamsError("query must not be empty", "query", query)
         }
@@ -71,6 +71,45 @@ class Client {
 
         return JSON.parse(this.stringifyResponse(r))
 
+    }
+
+    async getCompany(jurisdiction: string, id: number): Promise<object> {
+        validateJurisdiction(false, jurisdiction)
+
+        const r = this.get(`/business/${jurisdiction}/${id}/paid`, undefined)
+        return JSON.parse(this.stringifyResponse(r))
+    }
+
+    async getCompanyMeta(id: number): Promise<object> {
+        const r = this.get(`/business/${id}/data/view/meta`, undefined)
+        return JSON.parse(this.stringifyResponse(r))
+    }
+
+    async getCompanyCourtCases(id: number, limit: number = 5): Promise<object> {
+        validateLimit(limit)
+        const r = this.get(`/business/${id}/court_cases`, [["limit", String(limit)]])
+
+        return JSON.parse(this.stringifyResponse(r))
+    }
+
+
+    async getCompanyDepartments(id: number, limit: number = 5): Promise<object> {
+        validateLimit(limit)
+        const r = this.get(`/business/${id}/department`, [["limit", String(limit)]])
+
+        return JSON.parse(this.stringifyResponse(r))
+    }
+    async getCompanyGovContracts(id: number, limit: number = 5): Promise<object> {
+        validateLimit(limit)
+        const r = this.get(`/business/${id}/gov_contracts`, [["limit", String(limit)]])
+
+        return JSON.parse(this.stringifyResponse(r))
+    }
+    async getCompanyEvents(id: number, limit: number = 5): Promise<object> {
+        validateLimit(limit)
+        const r = this.get(`/business/${id}/events`, [["limit", String(limit)]])
+
+        return JSON.parse(this.stringifyResponse(r))
     }
 }
 
