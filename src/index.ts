@@ -9,6 +9,7 @@ import {
   Search,
   UserResponse,
 } from "./models";
+import { cli } from "swagger-typescript-api/cli";
 
 export class Client {
   apiKey: string;
