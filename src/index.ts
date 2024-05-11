@@ -6,6 +6,8 @@ import {
   DataViewResult,
   EventsWithMeta,
   GovContractsWithMeta,
+  RelationResult,
+  RelationsMeta,
   Search,
   UserResponse,
 } from "./models";
@@ -194,6 +196,35 @@ export class Client {
     validateLimit(limit);
     const r = this.get(`/business/${id}/events`, [["limit", String(limit)]]);
 
+    return r
+      .then((buf) => {
+        return buf;
+      })
+      .then((r) => {
+        return JSON.parse(this.stringifyResponse(r));
+      });
+  }
+
+  async getCompanyRelations(
+    id: number,
+    limit: number = 5,
+  ): Promise<RelationResult> {
+    validateLimit(limit);
+    const r = this.get(`/business/${id}/relations/table`, [
+      ["limit", String(limit)],
+    ]);
+
+    return r
+      .then((buf) => {
+        return buf;
+      })
+      .then((r) => {
+        return JSON.parse(this.stringifyResponse(r));
+      });
+  }
+
+  async getCompanyByIdentifier(identifier: string): Promise<CompanyResult> {
+    const r = this.get(`/business/${identifier}/bin`, undefined);
     return r
       .then((buf) => {
         return buf;
