@@ -20,54 +20,54 @@ const client = Client(token)
 
 ```javascript
 // Get info about current user (/api/v2/user/me)
-me = client.me()
+const me = client.me()
 ```
 
 ```javascript
 // Find company by query and jurisdiction (/api/v2/business/search)
-companies = client.search(query="казпочта", jurisdiction="kz", limit=5)
+const companies = client.search("казпочта", "kz", 5)
 // Or without specifiying jurisdiction
-companies = client.search(query="казпочта", limit=5)
+const companies = client.search("казпочта", undefined, 5)
 ```
 
 ```javascript
 // Get company by id and jurisdiction (/api/v2/business/{jurisdiction}/{id}/paid
-company = client.get_company("kz", 1)
+const company = client.getCompany("kz", 1)
 ```
 
 ```javascript
 // Get company meta by id (/api/v2/business/{id}/data/view/meta)
-meta = client.get_company_meta(1)
+const meta = client.getCompanyMeta(1)
 ```
 
 ```javascript
 // Get company court cases (/business/{id}/court_cases)
-court_cases = client.get_company_court_cases(id=1, limit=5)
+const court_cases = client.getCompanyCourtCases(1, 5)
 ```
 
 ```javascript
 // Get company departments (/business/{id}/department)
-departments = client.get_company_departments(id=1, limit=5)
+const departments = client.getCompanyDepartments(1, 5)
 ```
 
 ```javascript
 // Get company gov contracts (/business/{id}/gov_contracts)
-gov_contracts = client.get_company_gov_contracts(id=1, limit=5)
+const gov_contracts = client.getCompanyGovContracts(1, 5)
 ```
 
 ```javascript
 // Get company events (/business/{id}/events)
-company_events = client.get_company_events(id=1, limit=5)
+const company_events = client.getCompanyEvents(1, 5)
 ```
 
 ```javascript
 // Get company relations (/business/{id}/relations/table)
-company_relations = client.get_company_relations(id=1, limit=5)
+const company_relations = client.getCompanyRelations(1, 5)
 ```
 
 ```javascript
 // Get company by identifier
-company = client.get_company_by_identifier("1")
+const company = client.getCompanyByIdentifier("1")
 ```
 
 ##### Limit must be between 1 and 500, 501 is already invalid value
