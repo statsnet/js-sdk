@@ -1,6 +1,6 @@
 {
   "name": "statsnet_js_sdk",
-  "version": "1.0.9",
+  "version": "1.0.0",
   "description": "JS SDK for statsnet.co",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
