@@ -17,10 +17,10 @@ export class Client {
   apiKey: string;
   baseURL: string;
   constructor(apiKey: string | undefined = undefined) {
-    if (apiKey === "" || apiKey === undefined) {
+    if (!apiKey) {
       apiKey = process.env.STATSNET_API_KEY;
     }
-    if (apiKey === undefined) {
+    if (!apiKey) {
       throw new Error(
         "No api key provided. Set via argument or environment variable STATSNET_API_KEY.",
       );
