@@ -2,7 +2,7 @@
 ## Installation
 
 ```sh
-pip install statsnet-python-sdk
+npm install statsnet_js_sdk
 ```
 
 ## Usage
