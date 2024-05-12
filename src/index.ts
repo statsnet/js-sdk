@@ -53,7 +53,7 @@ export class Client {
           await response.arrayBuffer(),
         );
       }
-      return await response.arrayBuffer();
+      return response.arrayBuffer();
     });
   }
 
@@ -61,7 +61,7 @@ export class Client {
     endpoint: string,
     params: string[][] | undefined,
   ): Promise<ArrayBuffer> {
-    return await this.request("GET", endpoint, params, undefined);
+    return this.request("GET", endpoint, params, undefined);
   }
 
   private async post(
@@ -69,7 +69,7 @@ export class Client {
     params: string[][] | undefined,
     json: object | undefined,
   ): Promise<ArrayBuffer> {
-    return await this.request("POST", endpoint, params, json);
+    return this.request("POST", endpoint, params, json);
   }
 
   private stringifyResponse(response: ArrayBuffer): string {
@@ -80,13 +80,9 @@ export class Client {
   async me(): Promise<UserResponse> {
     const r = this.get("/user/me", undefined);
 
-    return r
-      .then((buf) => {
-        return buf;
-      })
-      .then((r) => {
-        return JSON.parse(this.stringifyResponse(r));
-      });
+    return r.then((buf) => {
+      return JSON.parse(this.stringifyResponse(buf));
+    });
   }
 
   async search(
@@ -107,37 +103,25 @@ export class Client {
       query: query,
     });
 
-    return r
-      .then((buf) => {
-        return buf;
-      })
-      .then((r) => {
-        return JSON.parse(this.stringifyResponse(r));
-      });
+    return r.then((buf) => {
+      return JSON.parse(this.stringifyResponse(buf));
+    });
   }
 
   async getCompany(jurisdiction: string, id: number): Promise<CompanyResult> {
     validateJurisdiction(false, jurisdiction);
 
     const r = this.get(`/business/${jurisdiction}/${id}/paid`, undefined);
-    return r
-      .then((buf) => {
-        return buf;
-      })
-      .then((r) => {
-        return JSON.parse(this.stringifyResponse(r));
-      });
+    return r.then((buf) => {
+      return JSON.parse(this.stringifyResponse(buf));
+    });
   }
 
   async getCompanyMeta(id: number): Promise<DataViewResult> {
     const r = this.get(`/business/${id}/data/view/meta`, undefined);
-    return r
-      .then((buf) => {
-        return buf;
-      })
-      .then((r) => {
-        return JSON.parse(this.stringifyResponse(r));
-      });
+    return r.then((buf) => {
+      return JSON.parse(this.stringifyResponse(buf));
+    });
   }
 
   async getCompanyCourtCases(
@@ -149,13 +133,9 @@ export class Client {
       ["limit", String(limit)],
     ]);
 
-    return r
-      .then((buf) => {
-        return buf;
-      })
-      .then((r) => {
-        return JSON.parse(this.stringifyResponse(r));
-      });
+    return r.then((buf) => {
+      return JSON.parse(this.stringifyResponse(buf));
+    });
   }
 
   async getCompanyDepartments(id: number, limit: number = 5): Promise<object> {
@@ -164,13 +144,9 @@ export class Client {
       ["limit", String(limit)],
     ]);
 
-    return r
-      .then((buf) => {
-        return buf;
-      })
-      .then((r) => {
-        return JSON.parse(this.stringifyResponse(r));
-      });
+    return r.then((buf) => {
+      return JSON.parse(this.stringifyResponse(buf));
+    });
   }
   async getCompanyGovContracts(
     id: number,
@@ -181,13 +157,9 @@ export class Client {
       ["limit", String(limit)],
     ]);
 
-    return r
-      .then((buf) => {
-        return buf;
-      })
-      .then((r) => {
-        return JSON.parse(this.stringifyResponse(r));
-      });
+    return r.then((buf) => {
+      return JSON.parse(this.stringifyResponse(buf));
+    });
   }
   async getCompanyEvents(
     id: number,
@@ -196,13 +168,9 @@ export class Client {
     validateLimit(limit);
     const r = this.get(`/business/${id}/events`, [["limit", String(limit)]]);
 
-    return r
-      .then((buf) => {
-        return buf;
-      })
-      .then((r) => {
-        return JSON.parse(this.stringifyResponse(r));
-      });
+    return r.then((buf) => {
+      return JSON.parse(this.stringifyResponse(buf));
+    });
   }
 
   async getCompanyRelations(
@@ -214,23 +182,15 @@ export class Client {
       ["limit", String(limit)],
     ]);
 
-    return r
-      .then((buf) => {
-        return buf;
-      })
-      .then((r) => {
-        return JSON.parse(this.stringifyResponse(r));
-      });
+    return r.then((buf) => {
+      return JSON.parse(this.stringifyResponse(buf));
+    });
   }
 
   async getCompanyByIdentifier(identifier: string): Promise<CompanyResult> {
     const r = this.get(`/business/${identifier}/bin`, undefined);
-    return r
-      .then((buf) => {
-        return buf;
-      })
-      .then((r) => {
-        return JSON.parse(this.stringifyResponse(r));
-      });
+    return r.then((buf) => {
+      return JSON.parse(this.stringifyResponse(buf));
+    });
   }
 }
