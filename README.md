@@ -9,13 +9,13 @@ pip install statsnet-python-sdk
 Import statsnet client and set API keys:
 
 ```javascript
-from statsnet_python_sdk import Client
+const sdk = require("statsnet_js_sdk")
 
-token = "123" # or set via STATSNET_API_KEY environment variable
+const token = "123" // or set via STATSNET_API_KEY environment variable
 ```
 
 ```javascript
-const client = Client(token)
+const client = new sdk.Client(token)
 ```
 
 ```javascript
@@ -42,7 +42,7 @@ const meta = client.getCompanyMeta(1)
 
 ```javascript
 // Get company court cases (/business/{id}/court_cases)
-const court_cases = client.getCompanyCourtCases(1, 5)
+const courtCases = client.getCompanyCourtCases(1, 5)
 ```
 
 ```javascript
@@ -52,17 +52,17 @@ const departments = client.getCompanyDepartments(1, 5)
 
 ```javascript
 // Get company gov contracts (/business/{id}/gov_contracts)
-const gov_contracts = client.getCompanyGovContracts(1, 5)
+const govContracts = client.getCompanyGovContracts(1, 5)
 ```
 
 ```javascript
 // Get company events (/business/{id}/events)
-const company_events = client.getCompanyEvents(1, 5)
+const companyEvents = client.getCompanyEvents(1, 5)
 ```
 
 ```javascript
 // Get company relations (/business/{id}/relations/table)
-const company_relations = client.getCompanyRelations(1, 5)
+const companyRelations = client.getCompanyRelations(1, 5)
 ```
 
 ```javascript
