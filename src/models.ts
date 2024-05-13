@@ -328,26 +328,26 @@ export interface UserResponse {
   position?: string;
   role?: string;
   email?: string;
-  email_verified?: string;
+  email_verified?: boolean;
   phone?: string;
-  phone_verified?: string;
+  phone_verified?: boolean;
   language?: string;
-  /** @format date */
+  /** @format date-time */
   created_at?: string;
-  /** @format date */
+  /** @format date-time */
   updated_at?: string;
-  /** @format date */
+  /** @format date-time */
   deleted_at?: string;
   plan_id?: number;
   reports?: number;
-  /** @format date */
+  /** @format date-time */
   start_date?: string;
-  /** @format date */
+  /** @format date-time */
   end_date?: string;
-  /** @format date */
+  /** @format date-time */
   next_bill_date?: string;
   api_token?: string;
-  email_delivery_ability?: string;
+  email_delivery_ability?: boolean;
   status?: string;
   last_sign_in_date?: string;
 }
