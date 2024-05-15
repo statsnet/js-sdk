@@ -177,14 +177,14 @@ export interface ReportsHistory {
       name_en?: string;
       name_native?: string;
       role?: string;
-      /** @format date */
+      /** @format date-time */
       start_date?: string;
-      /** @format date */
+      /** @format date-time */
       end_date?: string;
       inactive?: boolean;
     }[];
     structure?: string;
-    /** @format date */
+    /** @format date-time */
     view_date?: string;
   }[];
   total?: number;
@@ -208,9 +208,9 @@ export interface FavouriteObjectResponse {
       type: string;
       value?: string;
     }[];
-    /** @format date */
+    /** @format date-time */
     created_at?: string;
-    /** @format date */
+    /** @format date-time */
     deleted_at?: string;
   }[];
 }
@@ -223,9 +223,9 @@ export interface FavouriteListResponse {
     name?: string;
     id?: number;
     org_id?: number;
-    /** @format date */
+    /** @format date-time */
     created_at?: string;
-    /** @format date */
+    /** @format date-time */
     deleted_at?: string;
   }[];
 }
@@ -237,9 +237,9 @@ export interface OrganizationInvitesResponse {
     org_id?: number;
     user_id?: number;
     status?: string;
-    /** @format date */
+    /** @format date-time */
     created_at?: string;
-    /** @format date */
+    /** @format date-time */
     deleted_at?: string;
   }[];
 }
@@ -299,9 +299,9 @@ export interface ExportResult {
     file_path?: string;
     file_name?: string;
     file_type?: string;
-    /** @format date */
+    /** @format date-time */
     created_at?: string;
-    /** @format date */
+    /** @format date-time */
     updated_at?: string;
     error?: string;
     language?: string;
@@ -317,11 +317,12 @@ export interface ExportResult {
 export interface TokensResponse {
   access_token?: string;
   refresh_token?: string;
-  /** @format date */
+  /** @format date-time */
   expire_at?: string;
 }
 
 export interface UserResponse {
+  /** @format int64 */
   id?: number;
   name?: string;
   company_name?: string;
@@ -338,7 +339,12 @@ export interface UserResponse {
   updated_at?: string;
   /** @format date-time */
   deleted_at?: string;
+  /** @format int64 */
   plan_id?: number;
+  plan_text?: string;
+  /** @format int64 */
+  plan_reports?: number;
+  /** @format int64 */
   reports?: number;
   /** @format date-time */
   start_date?: string;
@@ -348,8 +354,12 @@ export interface UserResponse {
   next_bill_date?: string;
   api_token?: string;
   email_delivery_ability?: boolean;
-  status?: string;
-  last_sign_in_date?: string;
+  card_first_six?: string;
+  card_last_four?: string;
+  card_type?: string;
+  /** @format int64 */
+  referral_id?: number;
+  sessions?: string[];
 }
 
 export interface LocationResponse {
@@ -570,9 +580,9 @@ export interface ListOfData {
     source_url?: string;
   }[];
   conf_certs?: {
-    /** @format date */
+    /** @format date-time */
     start_date?: string;
-    /** @format date */
+    /** @format date-time */
     end_date?: string;
     registration_number?: string;
     product_name?: string;
@@ -583,9 +593,9 @@ export interface ListOfData {
     declarant_name?: string;
   }[];
   excises?: {
-    /** @format date */
+    /** @format date-time */
     start_date?: string;
-    /** @format date */
+    /** @format date-time */
     end_date?: string;
     status?: string;
     product?: string;
@@ -887,7 +897,7 @@ export interface CompanyWithState {
 export interface EventsWithMeta {
   events?: {
     jurisdiction?: string;
-    /** @format date */
+    /** @format date-time */
     date?: string;
     attr?: string;
     before?: string;
@@ -928,8 +938,19 @@ export interface RelationResult {
     is_person?: boolean;
   }[];
   meta?: {
-    name?: number;
-  }[];
+    /** @format int64 */
+    shareholders?: number;
+    /** @format int64 */
+    officers?: number;
+    /** @format int64 */
+    affiliations?: number;
+    /** @format int64 */
+    subsidiaries?: number;
+    /** @format int64 */
+    branches?: number;
+    /** @format int64 */
+    contacts?: number;
+  };
   total?: number;
 }
 
@@ -995,13 +1016,13 @@ export interface EmployeesWithMeta {
     employer_identifier?: string;
     employer_name?: string;
     employer_jurisdiction?: string;
-    /** @format date */
+    /** @format date-time */
     created_at?: string;
-    /** @format date */
+    /** @format date-time */
     updated_at?: string;
-    /** @format date */
+    /** @format date-time */
     start_date?: string;
-    /** @format date */
+    /** @format date-time */
     end_date?: string;
   }[];
   total?: number;
@@ -1080,15 +1101,15 @@ export interface Company {
   }[];
   export?: string[];
   import?: string[];
-  /** @format date */
+  /** @format date-time */
   last_update_date?: string;
-  /** @format date */
+  /** @format date-time */
   dissolution_date?: string;
-  /** @format date */
+  /** @format date-time */
   incorporation_date?: string;
-  /** @format date */
+  /** @format date-time */
   created_at?: string;
-  /** @format date */
+  /** @format date-time */
   updated_at?: string;
   structure?: string;
 }
@@ -1119,7 +1140,7 @@ export type Financials = {
 
 export type Headcount = {
   count?: string;
-  /** @format date */
+  /** @format date-time */
   date?: string;
 }[];
 
@@ -1149,9 +1170,9 @@ export type Officers = {
   name_en: string;
   name_native?: string;
   role?: string;
-  /** @format date */
+  /** @format date-time */
   start_date?: string;
-  /** @format date */
+  /** @format date-time */
   end_date?: string;
   inactive: boolean;
   contacts?: {
@@ -1184,9 +1205,9 @@ export type Shareholders = {
   is_person: boolean;
   share?: number;
   share_capital?: number;
-  /** @format date */
+  /** @format date-time */
   start_date?: string;
-  /** @format date */
+  /** @format date-time */
   end_date?: string;
   inactive?: boolean;
   contacts?: {
@@ -1255,6 +1276,12 @@ export interface ViewMetaBeta {
   employment_contracts?: number;
   subsidiaries?: number;
   contacts?: number;
+}
+
+export interface DepartmentsResult {
+  identifier?: string;
+  jurisdiction?: string;
+  departments?: string[];
 }
 
 export interface Error {
