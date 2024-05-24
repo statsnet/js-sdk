@@ -122,8 +122,8 @@ export interface QuasiContractsWithMeta {
 }
 
 export interface DataView {
-  key?: string;
-  value?: string;
+  key: string;
+  value: string;
 }
 
 export interface DataViewResult {
@@ -323,12 +323,12 @@ export interface TokensResponse {
 
 export interface UserResponse {
   /** @format int64 */
-  id?: number;
+  id: number;
   name?: string;
   company_name?: string;
   position?: string;
   role?: string;
-  email?: string;
+  email: string;
   email_verified?: boolean;
   phone?: string;
   phone_verified?: boolean;
@@ -375,10 +375,10 @@ export interface LocationResponse {
 }
 
 export interface GovContractsWithMeta {
-  count?: number;
-  pagination_count?: number;
-  pagination_offset?: number;
-  government_contract?: {
+  count: number;
+  pagination_count: number;
+  pagination_offset: number;
+  government_contract: {
     supplier_biin?: string;
     supplier_bik?: string;
     supplier_iik?: string;
@@ -403,7 +403,7 @@ export interface GovContractsWithMeta {
 }
 
 export interface Search {
-  company?: {
+  company: {
     id?: string;
     title?: string;
     identifiers?: {
@@ -420,10 +420,10 @@ export interface Search {
     }[];
     structure?: string;
   }[];
-  count?: number;
-  pagination_count?: number;
-  pagination_offset?: number;
-  is_phone?: boolean;
+  count: number;
+  pagination_count: number;
+  pagination_offset: number;
+  is_phone: boolean;
 }
 
 export interface FizRelations {
@@ -895,7 +895,7 @@ export interface CompanyWithState {
 }
 
 export interface EventsWithMeta {
-  events?: {
+  events: {
     jurisdiction?: string;
     /** @format date-time */
     date?: string;
@@ -918,14 +918,14 @@ export interface SubsidiariesCompanyWithMeta {
 }
 
 export interface RelationResult {
-  node?: {
+  node: {
     id?: number;
     name?: string;
     type?: string;
     is_person?: boolean;
     key?: string;
   }[];
-  links?: {
+  links: {
     id?: number;
     name?: string;
     source_key?: number;
@@ -937,7 +937,7 @@ export interface RelationResult {
     connection_key?: number;
     is_person?: boolean;
   }[];
-  meta?: {
+  meta: {
     /** @format int64 */
     shareholders?: number;
     /** @format int64 */
@@ -951,7 +951,7 @@ export interface RelationResult {
     /** @format int64 */
     contacts?: number;
   };
-  total?: number;
+  total: number;
 }
 
 export type SocialNetworks = {
@@ -977,7 +977,7 @@ export interface TaxDeclarationsResult {
 }
 
 export interface CourtCaseResult {
-  court_cases?: {
+  court_cases: {
     external_id: string;
     case_number: string;
     instance?: string;
@@ -997,10 +997,10 @@ export interface CourtCaseResult {
     }[];
     jurisdiction: string;
   }[];
-  case_type_meta?: CourtCasesMeta;
-  meta?: CourtCasesMeta;
-  year_meta?: CourtCasesMeta;
-  total?: number;
+  case_type_meta: CourtCasesMeta;
+  meta: CourtCasesMeta;
+  year_meta: CourtCasesMeta;
+  total: number;
 }
 
 export type CourtCasesMeta = {
@@ -1035,11 +1035,11 @@ export interface EmployeesWithMeta {
 }
 
 export interface CompanyResult {
-  company?: Company;
+  company: Company;
   alternatives?: Alternatives;
   is_full: boolean;
   risks_meta_data?: RisksMetaData;
-  contacts?: ResultContacts;
+  contacts: ResultContacts;
   seo?: Seo;
 }
 
@@ -1279,9 +1279,9 @@ export interface ViewMetaBeta {
 }
 
 export interface DepartmentsResult {
-  identifier?: string;
-  jurisdiction?: string;
-  departments?: string[];
+  identifier: string;
+  jurisdiction: string;
+  departments: string[];
 }
 
 export interface Error {
